@@ -12,8 +12,8 @@ require_once 'ami_env.php';
 //defined('_JEXEC') or die('Restricted access');
 
 $domain           = "http://www.part-kom.ru";
-$login                = 'virage-m'; //Ваш логин для входа на сайт http://www.part-kom.ru;
-$password             = '112233'; //Ваш пароль для входа на сайт http://www.part-kom.ru;
+$login                = ''; //Ваш логин для входа на сайт http://www.part-kom.ru;
+$password             = ''; //Ваш пароль для входа на сайт http://www.part-kom.ru;
 $searchPartUrl        = '/engine/api/v3/search/parts'; //url скрипта поиска детали
 $brandsByNumberUrl    = '/engine/api/v3/search/brands';
 
