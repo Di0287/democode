@@ -16,8 +16,8 @@ $providerId        = "". $_POST["providerId"] .""; //артикул склада
 //$makerId = htmlspecialchars(stripslashes($makerId));
 
 $domain           = "http://www.part-kom.ru";
-$login                = 'virage-m'; //Ваш логин для входа на сайт http://www.part-kom.ru;
-$password             = '112233'; //Ваш пароль для входа на сайт http://www.part-kom.ru;
+$login                = ''; //Ваш логин для входа на сайт http://www.part-kom.ru;
+$password             = ''; //Ваш пароль для входа на сайт http://www.part-kom.ru;
 $searchPartUrl        = '/engine/api/v3/search/parts'; //url скрипта поиска детали
 
 // НАЧАЛО Функция запроса данных
