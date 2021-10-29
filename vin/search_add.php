@@ -14,8 +14,7 @@ $brand       	   = "". $_POST["brand"] .""; //название производ�
 	// НАЧАЛО Функция запроса данных
 	$ch = curl_init('https://adavanta.ru/api/v1/login/');
 	curl_setopt($ch, CURLOPT_POST, true); //переключаем запрос в POST
-	//curl_setopt($ch, CURLOPT_POSTFIELDS,"{ \"username\": \"demo3@avanta74.ru\", \"password\": \"daynBeisht\"}"); //Это POST данные
-	curl_setopt($ch, CURLOPT_POSTFIELDS,"{ \"username\": \"virage-m@ya.ru\", \"password\": \"M952UXQJ\"}"); //Это POST данные
+	curl_setopt($ch, CURLOPT_POSTFIELDS,"{ }"); //Это POST данные
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 	curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); //Отключим проверку сертификата https
