@@ -1,8 +1,6 @@
 <?php
 if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
 
-use Bitrix\Main\Mail\Event;
-
 /**
  * Bitrix vars
  *
@@ -59,30 +57,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] <> '' && (!isset($_P
 		}			
 		if(empty($arResult["ERROR_MESSAGE"]))
 		{
-			$arFields = array(
-				"EVENT_NAME" => $arParams["EVENT_NAME"],
-				"LID" => SITE_ID,
-				'MESSAGE_ID' => null,
-				'IS_FILE_COPIED' => 'N',
-				"C_FIELDS" => array(
-					"AUTHOR" => $_POST["user_name"],
-					"AUTHOR_EMAIL" => $_POST["user_email"],
-					"EMAIL_TO" => $arParams["EMAIL_TO"],
-					"TEXT" => $_POST["MESSAGE"],
-				),
+			$arFields = Array(
+				"AUTHOR" => $_POST["user_name"],
+				"AUTHOR_EMAIL" => $_POST["user_email"],
+				"EMAIL_TO" => $arParams["EMAIL_TO"],
+				"TEXT" => $_POST["MESSAGE"],
 			);
-			
 			if(!empty($arParams["EVENT_MESSAGE_ID"]))
 			{
-				foreach($arParams["EVENT_MESSAGE_ID"] as $v) {
-					if(IntVal($v) > 0) {
-						$arFields['MESSAGE_ID'] = IntVal($v);
-						Event::send($arFields);
-					}
-				}
-					
-			}else
-				Event::send($arFields);
+				foreach($arParams["EVENT_MESSAGE_ID"] as $v)
+					if(IntVal($v) > 0)
+						CEvent::Send($arParams["EVENT_NAME"], SITE_ID, $arFields, "N", IntVal($v));
+			}
+			else
+				CEvent::Send($arParams["EVENT_NAME"], SITE_ID, $arFields);
 			$_SESSION["MF_NAME"] = htmlspecialcharsbx($_POST["user_name"]);
 			$_SESSION["MF_EMAIL"] = htmlspecialcharsbx($_POST["user_email"]);
 			LocalRedirect($APPLICATION->GetCurPageParam("success=".$arResult["PARAMS_HASH"], Array("success")));
